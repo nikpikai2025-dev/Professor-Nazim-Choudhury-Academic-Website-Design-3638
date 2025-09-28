@@ -14,7 +14,7 @@ function Contact() {
     },
     {
       icon: FiPhone,
-      label: "Phone", 
+      label: "Phone",
       value: "920-465-2957",
       link: "tel:9204652957"
     },
@@ -48,7 +48,7 @@ function Contact() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="main-content">
       <h1 className="text-3xl font-light text-purple-900 mb-8">Contact</h1>
       
       <div className="grid gap-12 lg:grid-cols-2">
@@ -56,10 +56,9 @@ function Contact() {
         <div>
           <h2 className="text-xl font-medium text-purple-900 mb-6">Get in Touch</h2>
           <p className="text-purple-700 mb-8 leading-relaxed">
-            I welcome discussions about research collaborations, academic opportunities, and potential partnerships. 
-            Feel free to reach out if you're interested in my work or have questions about our research projects.
+            I welcome discussions about research collaborations, academic opportunities, and potential partnerships. Feel free to reach out if you're interested in my work or have questions about our research projects.
           </p>
-          
+
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
@@ -69,8 +68,8 @@ function Contact() {
                 <div>
                   <p className="text-sm font-medium text-purple-900 mb-1">{item.label}</p>
                   {item.link ? (
-                    <a 
-                      href={item.link} 
+                    <a
+                      href={item.link}
                       className="text-purple-700 hover:text-purple-900 transition-colors"
                     >
                       {item.value}
@@ -96,8 +95,8 @@ function Contact() {
                   className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 hover:text-purple-900 hover:bg-purple-200 transition-colors"
                   title={social.label}
                 >
-                  <img 
-                    src={social.customIcon} 
+                  <img
+                    src={social.customIcon}
                     alt={social.label}
                     className="w-5 h-5 object-contain"
                   />
@@ -107,43 +106,37 @@ function Contact() {
           </div>
         </div>
 
-        {/* Research Interests & Collaboration */}
+        {/* Research Interests & For Students */}
         <div>
           <h2 className="text-xl font-medium text-purple-900 mb-6">Research Collaboration</h2>
-          
           <div className="space-y-6">
             <div className="p-6 bg-purple-50 rounded-lg">
               <h3 className="font-medium text-purple-900 mb-3">Current Research Interests</h3>
               <ul className="space-y-2 text-purple-700">
-                <li>• Interpretable Machine Learning</li>
-                <li>• Privacy-Preserving AI</li>
-                <li>• Federated Learning Systems</li>
-                <li>• AI Ethics and Fairness</li>
-                <li>• Graph Neural Networks</li>
-              </ul>
-            </div>
-
-            <div className="p-6 bg-purple-50 rounded-lg">
-              <h3 className="font-medium text-purple-900 mb-3">Collaboration Opportunities</h3>
-              <ul className="space-y-2 text-purple-700">
-                <li>• Joint research projects</li>
-                <li>• Graduate student co-supervision</li>
-                <li>• Industry partnerships</li>
-                <li>• Conference presentations</li>
-                <li>• Grant proposal collaborations</li>
+                <li>• Social Network Analysis and Link Prediction</li>
+                <li>• Human-Computer Interaction (HCI) and Usability</li>
+                <li>• Social Cybersecurity</li>
+                <li>• Mobile and AI-based Intoxication/Impairment Detection</li>
+                <li>• Algorithm Analysis and Educational Technology</li>
               </ul>
             </div>
 
             <div className="p-6 bg-purple-50 rounded-lg">
               <h3 className="font-medium text-purple-900 mb-3">For Students</h3>
               <p className="text-purple-700">
-                Prospective graduate students interested in machine learning and AI research are encouraged to reach out. 
-                Please include your CV, research interests, and relevant background when contacting me.
+                Prospective undergraduate and graduate students interested in applied machine learning in networks, AI applications in safety/health, cybersecurity, or HCI are especially encouraged to reach out. Please include your CV, research interests, and relevant background when contacting me.
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="mt-16 pt-8 border-t border-purple-200">
+        <p className="text-center text-sm text-purple-500">
+          Last updated September 2025.
+        </p>
+      </footer>
     </div>
   );
 }
