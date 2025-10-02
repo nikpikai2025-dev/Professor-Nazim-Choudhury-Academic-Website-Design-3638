@@ -5,35 +5,93 @@
 }
 
 /* MAIN CONTENT CONTAINER - Consistent across all pages */
+// .main-content {
+//   width: 70%; /* Reduced from 80% to 70% for more padding */
+//   margin: 0 auto; /* Centers the content with 15% padding on each side */
+//   padding: 3rem 2rem; /* Added horizontal padding back for internal spacing */
+//   max-width: none; /* Remove max-width constraint to allow percentage-based layout */
+// }
+
 .main-content {
-  width: 80%; /* Content takes 80% of page width */
-  margin: 0 auto; /* Centers the content with 10% padding on each side */
-  padding: 3rem 0; /* Only vertical padding, horizontal spacing handled by width/margin */
-  max-width: none; /* Remove max-width constraint to allow percentage-based layout */
+  max-width: 1100px;         /* or 900px if you prefer a tighter column */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;        /* Add left padding for gutter (desktop & tablet) */
+  padding-right: 40px;       /* Right gutter */
+  padding-top: 3rem;         /* You can keep or tweak vertical padding */
+  padding-bottom: 3rem;
+  width: 100%;               /* Always take full parent width up to max-width */
+  box-sizing: border-box;    /* Ensures padding is included in width */
 }
 
-/* Mobile responsive adjustments for main content */
-@media (max-width: 768px) {
-  .main-content {
-    width: 80%; /* Maintain 80% width even on mobile */
-    padding: 2.5rem 0; /* Only vertical padding */
-  }
-}
-
+/* Small mobile screens */
 @media (max-width: 480px) {
   .main-content {
-    width: 80%; /* Consistent 80% width */
-    padding: 2rem 0; /* Only vertical padding */
+    max-width: 100vw;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 }
 
-/* Desktop larger screens */
-@media (min-width: 1200px) {
+/* Mobile devices */
+@media (max-width: 768px) {
   .main-content {
-    width: 80%; /* Consistent 80% width */
-    padding: 4rem 0; /* Only vertical padding */
+    max-width: 100vw;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
+
+/* Tablet devices */
+@media (max-width: 900px) {
+  .main-content {
+    max-width: 100vw;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Big desktop screens */
+@media (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;   /* Or any large fixed width you prefer */
+    margin: 0 auto;      /* Center content on big screens */
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+// /* Mobile responsive adjustments for main content */
+// @media (max-width: 768px) {
+//   .main-content {
+//     width: 75%; /* Slightly wider on mobile but still more padding than before */
+//     padding: 2.5rem 1.5rem; /* Maintained horizontal padding for mobile */
+//   }
+// }
+
+// @media (max-width: 480px) {
+//   .main-content {
+//     width: 80%; /* More generous on small mobile screens */
+//     padding: 2rem 1rem; /* Reduced padding for very small screens */
+//   }
+// }
+
+// /* Desktop larger screens */
+// @media (min-width: 1200px) {
+//   .main-content {
+//     width: 65%; /* Even more padding on large screens */
+//     padding: 4rem 3rem; /* Increased horizontal padding for large screens */
+//   }
+// }
+
 
 /* Ensure internal content doesn't need additional horizontal padding */
 .main-content > * {
@@ -92,6 +150,17 @@ a:focus {
 .profile-pic-overlap {
   position: relative;
   z-index: 20;
+}
+.profile-pic-overlap {
+  width: 150px;  /* or 170px, try a size you want */
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+  top: (value that keeps 5% below the banner, see below);
+  left: (your placement);
+  z-index: 20;
+  object-fit: cover;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.07);
 }
 
 /* Enhanced banner styling */

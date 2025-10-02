@@ -48,7 +48,7 @@ function Contact() {
   ];
 
   return (
-    <div className="main-content">
+    <div className="main-content px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-6 sm:py-10 lg:py-14">
       <h1 className="text-3xl font-light text-purple-900 mb-8">Contact</h1>
       
       <div className="grid gap-12 lg:grid-cols-2">

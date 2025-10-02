@@ -108,7 +108,7 @@ function Home() {
   };
 
   return (
-    <div className="main-content">
+    <div className="main-content px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-6 sm:py-10 lg:py-14">
       {/* About Section - Increased top margin to account for profile image extending below banner */}
       <section className="mb-16 mt-4 sm:mt-6 lg:mt-8">
         <h2 className="text-2xl font-light text-purple-900 mb-6 border-b border-purple-200 pb-2">
