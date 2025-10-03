@@ -30,7 +30,7 @@ function Navigation() {
       {/* Mobile Profile Picture */}
       <div className="md:hidden flex justify-center py-4 bg-gradient-to-r from-purple-50 via-purple-100 to-purple-50 border-b-2 border-purple-200">
         <img
-          src="https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1759462064884-blob"
+          src="https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1759468272401-tight_circular_crop.png"
           alt="Dr. Nazim A. Choudhury"
           className="w-24 h-24 rounded-full shadow-xl"
         />
@@ -39,9 +39,8 @@ function Navigation() {
       {/* Floating Profile Picture - Desktop/Tablet Only */}
       <div className="hidden md:block absolute left-8 top-2 z-20">
         <img
-          src="https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1759462064884-blob"
+          src="https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1759468272401-tight_circular_crop.png"
           alt="Dr. Nazim A. Choudhury"
-       //   className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full shadow-xl"
           className="w-40 h-40 lg:w-48 lg:h-48 rounded-full border-2 border-white shadow-xl"
         />
       </div>
@@ -122,7 +121,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-white">
         <Navigation />
-        <main className="mt-16 md:mt-24 lg:mt-28">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/research" element={<Research />} />
