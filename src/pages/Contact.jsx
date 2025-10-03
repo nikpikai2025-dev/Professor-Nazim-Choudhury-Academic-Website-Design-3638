@@ -19,10 +19,11 @@ function Contact() {
 
   return (
     <div className="main-content px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-6 sm:py-10 lg:py-14">
+    <section className="mt-4 sm:mt-6 lg:mt-8">
       <h2 className="text-2xl font-light text-purple-900 mb-6 border-b border-purple-200 pb-2">
         Contact
       </h2>
-      
+      </section>
       <div className="grid gap-12 lg:grid-cols-2">
         {/* Contact Information */}
         <div>
