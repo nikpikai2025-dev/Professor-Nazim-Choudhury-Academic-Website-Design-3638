@@ -5,23 +5,16 @@
 }
 
 /* MAIN CONTENT CONTAINER - Consistent across all pages */
-// .main-content {
-//   width: 70%; /* Reduced from 80% to 70% for more padding */
-//   margin: 0 auto; /* Centers the content with 15% padding on each side */
-//   padding: 3rem 2rem; /* Added horizontal padding back for internal spacing */
-//   max-width: none; /* Remove max-width constraint to allow percentage-based layout */
-// }
-
 .main-content {
-  max-width: 1100px;         /* or 900px if you prefer a tighter column */
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 40px;        /* Add left padding for gutter (desktop & tablet) */
-  padding-right: 40px;       /* Right gutter */
-  padding-top: 3rem;         /* You can keep or tweak vertical padding */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 3rem;
   padding-bottom: 3rem;
-  width: 100%;               /* Always take full parent width up to max-width */
-  box-sizing: border-box;    /* Ensures padding is included in width */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Small mobile screens */
@@ -60,38 +53,14 @@
 /* Big desktop screens */
 @media (min-width: 1200px) {
   .main-content {
-    max-width: 1200px;   /* Or any large fixed width you prefer */
-    margin: 0 auto;      /* Center content on big screens */
+    max-width: 1200px;
+    margin: 0 auto;
     padding-left: 36px;
     padding-right: 36px;
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
 }
-
-// /* Mobile responsive adjustments for main content */
-// @media (max-width: 768px) {
-//   .main-content {
-//     width: 75%; /* Slightly wider on mobile but still more padding than before */
-//     padding: 2.5rem 1.5rem; /* Maintained horizontal padding for mobile */
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .main-content {
-//     width: 80%; /* More generous on small mobile screens */
-//     padding: 2rem 1rem; /* Reduced padding for very small screens */
-//   }
-// }
-
-// /* Desktop larger screens */
-// @media (min-width: 1200px) {
-//   .main-content {
-//     width: 65%; /* Even more padding on large screens */
-//     padding: 4rem 3rem; /* Increased horizontal padding for large screens */
-//   }
-// }
-
 
 /* Ensure internal content doesn't need additional horizontal padding */
 .main-content > * {
@@ -102,18 +71,15 @@
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #f3e8ff;
+  background: #f5f5f5;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #c084fc;
+  background: #d1d5db;
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #a855f7;
+  background: #9ca3af;
 }
 
 /* Smooth transitions */
@@ -125,7 +91,6 @@
 .prose {
   line-height: 1.7;
 }
-
 .prose p {
   margin-bottom: 1.25em;
 }
@@ -134,15 +99,13 @@
 a {
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: none;
 }
 
 /* Focus styles for accessibility */
-button:focus,
-a:focus {
-  outline: 2px solid #7c3aed;
+button:focus, a:focus {
+  outline: 2px solid #6b7280;
   outline-offset: 2px;
 }
 
@@ -152,7 +115,7 @@ a:focus {
   z-index: 20;
 }
 .profile-pic-overlap {
-  width: 150px;  /* or 170px, try a size you want */
+  width: 150px;
   height: 150px;
   border-radius: 50%;
   position: absolute;
@@ -165,10 +128,9 @@ a:focus {
 
 /* Enhanced banner styling */
 .banner-gradient {
-  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #faf5ff 100%);
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%);
   position: relative;
 }
-
 .banner-gradient::before {
   content: '';
   position: absolute;
@@ -176,7 +138,7 @@ a:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(168, 85, 247, 0.05) 50%, transparent 100%);
+  background: linear-gradient(45deg, transparent 0%, rgba(156, 163, 175, 0.05) 50%, transparent 100%);
   pointer-events: none;
 }
 
@@ -184,7 +146,6 @@ a:focus {
 .banner-overlay {
   animation: subtle-pulse 8s ease-in-out infinite;
 }
-
 @keyframes subtle-pulse {
   0%, 100% {
     opacity: 0.6;
@@ -198,7 +159,6 @@ a:focus {
 .nav-item-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .nav-item-hover:hover {
   transform: translateY(-1px);
 }
@@ -207,10 +167,9 @@ a:focus {
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* Backdrop blur support */
@@ -219,10 +178,9 @@ a:focus {
     backdrop-filter: blur(8px);
   }
 }
-
 @supports not (backdrop-filter: blur(8px)) {
   .backdrop-blur-sm {
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255,255,255,0.98);
   }
 }
 
@@ -233,20 +191,17 @@ a:focus {
     transform: none !important;
     margin: 0 auto 1rem auto;
   }
-  
   /* Mobile specific profile image positioning */
   .mobile-profile-adjust {
     left: 50% !important;
     transform: translateX(-50%) translateY(10%) !important;
   }
-  
   /* Mobile text adjustment */
   .mobile-text-center {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 }
-
 @media (max-width: 640px) {
   /* Smaller mobile screens - adjust profile image size */
   .profile-pic-overlap {
@@ -260,19 +215,15 @@ a:focus {
   .fixed {
     position: static !important;
   }
-  
   nav {
     display: none !important;
   }
-  
   main {
     padding-top: 0 !important;
   }
-  
   .banner-section {
     display: none !important;
   }
-  
   .main-content {
     width: 100% !important;
     padding: 0 !important;
@@ -281,9 +232,8 @@ a:focus {
 
 /* Enhanced shadow effects */
 .shadow-enhanced {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 }
-
 .shadow-enhanced:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
 }
