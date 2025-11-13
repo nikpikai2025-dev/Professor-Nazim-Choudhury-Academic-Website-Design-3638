@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import SafeIcon from '../common/SafeIcon';
 import * as FiIcons from 'react-icons/fi';
 
-const { FiDownload, FiFileText, FiEyeOff, FiEye, FiUpload, FiCheck, FiX, FiMail, FiPhone, FiMapPin } = FiIcons;
+const { FiDownload, FiFileText, FiEye, FiMail, FiPhone, FiMapPin } = FiIcons;
 
 function Home() {
   // Bio section visibility control - set to true to show, false to hide
@@ -14,23 +14,13 @@ function Home() {
   // Contact section visibility control - set to true to show, false to hide
   const [showContactSection] = useState(true); // Author can change this to control visibility
 
-  // Author mode control - set to true for author upload view, false for viewer download view
-  const [isAuthorMode] = useState(true); // Author can toggle this
-
-  // File upload state
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
-  const fileInputRef = useRef(null);
-
-  // Resume/CV information - Author can update these details
-  const [resumeInfo, setResumeInfo] = useState({
-    hasResume: true, // Set to false if no resume is available
-    resumeUrl: "https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/sample-cv.pdf", // Replace with actual resume URL
-    lastUpdated: "September 2024", // Update when resume is refreshed
-    fileSize: "2.1 MB", // Optional: include file size
-    fileName: "nazim_choudhury_cv.pdf"
-  });
+  // CV information - Author can update these details
+  const cvInfo = {
+    fileName: "nazim_choudhury_cv.pdf",
+    fileUrl: "/assets/nazim_choudhury_cv.pdf", // Path to PDF in assets folder
+    lastUpdated: "September 2024", // Update when CV is refreshed
+    fileSize: "2.1 MB" // Optional: include file size
+  };
 
   // Contact information - Same as Contact page
   const contactInfo = [
@@ -45,87 +35,6 @@ function Home() {
     { icon: null, label: "LinkedIn", url: "https://www.linkedin.com/in/nazim-choudhury-5a673a3b/", customIcon: "https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1758229174957-linkedin%20logo.png" },
     { icon: null, label: "ResearchGate", url: "https://www.researchgate.net/profile/Nazim-Choudhury", customIcon: "https://quest-media-storage-bucket.s3.us-east-2.amazonaws.com/1758229239640-research%20gate%20logo.png" }
   ];
-
-  // File upload handler
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    // Validate file type
-    if (file.type !== 'application/pdf') {
-      alert('Please select a PDF file.');
-      return;
-    }
-
-    // Validate file size (max 10MB)
-    if (file.size > 10 * 1024 * 1024) {
-      alert('File size must be less than 10MB.');
-      return;
-    }
-
-    // Simulate upload process
-    setIsUploading(true);
-    setUploadProgress(0);
-    setUploadSuccess(false);
-
-    // Simulate upload progress
-    const uploadInterval = setInterval(() => {
-      setUploadProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(uploadInterval);
-          setIsUploading(false);
-          setUploadSuccess(true);
-
-          // Update resume info
-          setResumeInfo({
-            hasResume: true,
-            resumeUrl: URL.createObjectURL(file), // In real app, this would be the uploaded file URL
-            lastUpdated: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
-            fileSize: `${(file.size / (1024 * 1024)).toFixed(1)} MB`,
-            fileName: file.name
-          });
-
-          // Hide success message after 3 seconds
-          setTimeout(() => setUploadSuccess(false), 3000);
-          return 100;
-        }
-        return prev + 20;
-      });
-    }, 200);
-
-    // Clear file input
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
-  };
-
-  // Replace file handler
-  const handleReplaceFile = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
-
-  // Remove file handler
-  const handleRemoveFile = () => {
-    if (window.confirm('Are you sure you want to remove the current CV? This action cannot be undone.')) {
-      setResumeInfo({
-        hasResume: false,
-        resumeUrl: "",
-        lastUpdated: "",
-        fileSize: "",
-        fileName: ""
-      });
-      setUploadSuccess(false);
-    }
-  };
-
-  // Choose file handler
-  const handleChooseFile = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
 
   return (
     <div className="main-content px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-6 sm:py-10 lg:py-14">
@@ -161,144 +70,39 @@ function Home() {
               <div>
                 <h3 className="text-xl font-medium text-black mb-2">Curriculum Vitae</h3>
                 <p className="text-black leading-relaxed mb-4">
-                  {isAuthorMode 
-                    ? "Upload and manage your complete academic curriculum vitae for public access."
-                    : "Download Dr. Choudhury's complete academic curriculum vitae, including detailed information about his education, research experience, publications, grants, and professional activities."
-                  }
+                  Download Dr. Choudhury's complete academic curriculum vitae, including detailed information about his education, research experience, publications, grants, and professional activities.
                 </p>
               </div>
               <SafeIcon icon={FiFileText} className="w-8 h-8 text-gray-600 flex-shrink-0 mt-1" />
             </div>
 
-            {/* Hidden file input */}
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".pdf"
-              onChange={handleFileUpload}
-              className="hidden"
-            />
-
-            {/* Upload Success Message */}
-            {uploadSuccess && (
-              <div className="mb-4 p-4 bg-green-100 border border-green-200 rounded-lg flex items-center gap-3 shadow-sm">
-                <SafeIcon icon={FiCheck} className="w-5 h-5 text-green-600" />
-                <span className="text-green-800 font-medium">CV uploaded successfully!</span>
-              </div>
-            )}
-
-            {/* Author Upload View */}
-            {isAuthorMode ? (
-              <div className="space-y-4">
-                {/* Upload Area */}
-                <div className="p-6 bg-white rounded-lg border-2 border-dashed border-gray-300 text-center shadow-sm">
-                  <SafeIcon icon={FiUpload} className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <h4 className="font-medium text-black mb-2">Upload Your CV</h4>
-                  <p className="text-black mb-4">
-                    Upload your latest curriculum vitae (PDF format recommended, max 10MB)
-                  </p>
-                  
-                  {/* Upload Progress */}
-                  {isUploading && (
-                    <div className="mb-4">
-                      <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
-                        <div 
-                          className="bg-gray-600 h-2 rounded-full transition-all duration-300" 
-                          style={{ width: `${uploadProgress}%` }}
-                        ></div>
-                      </div>
-                      <span className="text-sm text-black">Uploading... {uploadProgress}%</span>
-                    </div>
-                  )}
-
-                  <button 
-                    onClick={handleChooseFile}
-                    disabled={isUploading}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
-                  >
-                    <SafeIcon icon={FiUpload} className="w-4 h-4" />
-                    {isUploading ? 'Uploading...' : 'Choose File'}
-                  </button>
+            {/* CV Download Section - Direct Link */}
+            <div className="p-6 bg-white rounded-lg border border-gray-300 shadow-sm">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <SafeIcon icon={FiFileText} className="w-6 h-6 text-gray-600" />
                 </div>
-
-                {/* Current CV Display */}
-                {resumeInfo.hasResume && (
-                  <div className="p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <SafeIcon icon={FiFileText} className="w-5 h-5 text-gray-600" />
-                        </div>
-                        <div>
-                          <h5 className="font-medium text-black">Current CV</h5>
-                          <div className="text-sm text-black">
-                            <p>Last updated: {resumeInfo.lastUpdated}</p>
-                            <p>File: {resumeInfo.fileName}</p>
-                            <p>Size: {resumeInfo.fileSize}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <button 
-                          onClick={handleReplaceFile}
-                          className="px-3 py-1 text-sm bg-gray-100 text-black rounded hover:bg-gray-200 transition-colors"
-                        >
-                          Replace
-                        </button>
-                        <button 
-                          onClick={handleRemoveFile}
-                          className="px-3 py-1 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
+                <div className="flex-1">
+                  <a 
+                    href={cvInfo.fileUrl} 
+                    download={cvInfo.fileName}
+                    className="inline-flex items-center gap-2 group"
+                  >
+                    <h4 className="font-medium text-black text-lg group-hover:text-gray-700 transition-colors underline-offset-4 group-hover:underline">
+                      {cvInfo.fileName}
+                    </h4>
+                    <SafeIcon icon={FiDownload} className="w-4 h-4 text-gray-600 group-hover:text-gray-800 transition-colors" />
+                  </a>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm text-black mt-1">
+                    <span>Last updated: {cvInfo.lastUpdated}</span>
+                    <span>•</span>
+                    <span>Size: {cvInfo.fileSize}</span>
+                    <span>•</span>
+                    <span>Click to download</span>
                   </div>
-                )}
+                </div>
               </div>
-            ) : (
-              /* Viewer Download View */
-              <div className="space-y-4">
-                {resumeInfo.hasResume ? (
-                  <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between p-4 bg-white rounded-lg border border-gray-300 shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <SafeIcon icon={FiFileText} className="w-5 h-5 text-gray-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-black">Academic CV</h4>
-                        <div className="flex items-center gap-4 text-sm text-black">
-                          <span>Last updated: {resumeInfo.lastUpdated}</span>
-                          {resumeInfo.fileSize && (
-                            <>
-                              <span>•</span>
-                              <span>{resumeInfo.fileSize}</span>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <a 
-                      href={resumeInfo.resumeUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium shadow-sm hover:shadow-md"
-                    >
-                      <SafeIcon icon={FiDownload} className="w-4 h-4" />
-                      Download CV
-                    </a>
-                  </div>
-                ) : (
-                  <div className="text-center p-8 bg-white/70 rounded-lg border-2 border-dashed border-gray-300">
-                    <SafeIcon icon={FiEyeOff} className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <h4 className="font-medium text-black mb-2">CV Currently Unavailable</h4>
-                    <p className="text-black">
-                      The curriculum vitae is being updated. Please check back soon or contact Dr. Choudhury directly for the latest version.
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
+            </div>
 
             {/* Author Control Instructions (Hidden in production) */}
             {process.env.NODE_ENV === 'development' && (
@@ -309,10 +113,11 @@ function Home() {
                 </h5>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Set <code>showBioSection</code> to <code>false</code> to hide this entire section</li>
-                  <li>• Set <code>isAuthorMode</code> to <code>true</code> for upload view, <code>false</code> for download view</li>
-                  <li>• Update <code>resumeInfo.hasResume</code> to <code>false</code> if no resume is available</li>
-                  <li>• Replace <code>resumeInfo.resumeUrl</code> with your actual resume URL</li>
-                  <li>• Update <code>resumeInfo.lastUpdated</code> when you refresh your resume</li>
+                  <li>• Update <code>cvInfo.fileName</code> with your CV filename</li>
+                  <li>• Update <code>cvInfo.fileUrl</code> with the correct path to your CV PDF</li>
+                  <li>• Update <code>cvInfo.lastUpdated</code> when you refresh your CV</li>
+                  <li>• Update <code>cvInfo.fileSize</code> with the current file size</li>
+                  <li>• Place your CV PDF file in the /assets folder</li>
                 </ul>
               </div>
             )}

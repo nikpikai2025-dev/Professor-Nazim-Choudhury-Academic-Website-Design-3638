@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import SafeIcon from '../common/SafeIcon';
 import AccordionSection from '../components/Accordion';
 import * as FiIcons from 'react-icons/fi';
+import publicationNetworkDiagram from '../../assets/publication-network-diagram.jpg';
+import evolutionaryFeaturesForDynamicLinkPredictionInSocialNetwork from '../../assets/evolutionary-features-for-dynamic-link-prediction-in-social-network.jpg';
+import evaluationOfInteractiveComputerEnabledTabletopLearningToolForChildren from '../../assets/evaluation-of-interactive-computer-enabled-tabletop-learning-tool-for-children.jpg';
+import doApiMigrationsRevertCommits from '../../assets/do-api-migrations-revert-commits.jpg';
+import matrixMultiplicationsWithDiagonals from '../../assets/matrix-multiplications-with-diagonals.jpg';
+import cryptocurrencyFutureOfPayments from '../../assets/cryptocurrency-future-of-payments.jpg';
+import ransomwareThreatToCyberSmartCities from '../../assets/ransomware-threat-to-cyber-smart-cities.jpg';
 
 const { FiExternalLink, FiUsers, FiBookOpen, FiAward, FiTarget, FiFileText } = FiIcons;
 
@@ -17,7 +24,8 @@ function Research() {
       venue: "Mathematics",
       year: "2024",
       type: "Journal",
-      link: "https://www.mdpi.com/2227-7390/12/2/285"
+      link: "https://www.mdpi.com/2227-7390/12/2/285",
+      imageUrl: publicationNetworkDiagram
     },
     {
       title: "Evolutionary Features for Dynamic Link Prediction in Social Networks",
@@ -25,7 +33,8 @@ function Research() {
       venue: "Applied Sciences",
       year: "2023",
       type: "Journal",
-      link: "https://www.mdpi.com/2076-3417/13/5/2913"
+      link: "https://www.mdpi.com/2076-3417/13/5/2913",
+      imageUrl: evolutionaryFeaturesForDynamicLinkPredictionInSocialNetwork
     },
     {
       title: "Evaluation of an interactive computer-enabled tabletop learning tool for children with special needs",
@@ -33,7 +42,8 @@ function Research() {
       venue: "Journal of Educational Computing Research",
       year: "2023",
       type: "Journal",
-      link: "https://journals.sagepub.com/doi/abs/10.1177/07356331221105396"
+      link: "https://journals.sagepub.com/doi/abs/10.1177/07356331221105396",
+      imageUrl: evaluationOfInteractiveComputerEnabledTabletopLearningToolForChildren
     },
     {
       title: "Do API migrations revert commits? A preliminary investigation",
@@ -41,7 +51,8 @@ function Research() {
       venue: "IEEE UEMCON",
       year: "2023",
       type: "Conference",
-      link: "https://ieeexplore.ieee.org/document/10424276"
+      link: "https://ieeexplore.ieee.org/document/10424276",
+      imageUrl: doApiMigrationsRevertCommits
     },
     {
       title: "Matrix multiplication with diagonals: Structured sparse matrices and beyond",
@@ -49,7 +60,8 @@ function Research() {
       venue: "HP3C",
       year: "2023",
       type: "Conference",
-      link: "https://ieeexplore.ieee.org/document/10205335"
+      link: "https://ieeexplore.ieee.org/document/10205335",
+      imageUrl: matrixMultiplicationsWithDiagonals
     },
     {
       title: "Cryptocurrency: Is it the Future of Payments?",
@@ -57,7 +69,8 @@ function Research() {
       venue: "Springer book chapter, Cybersecurity for Smart Cities",
       year: "2023",
       type: "Book Chapter",
-      link: "https://link.springer.com/chapter/10.1007/978-3-031-24946-4_12"
+      link: "https://link.springer.com/chapter/10.1007/978-3-031-24946-4_12",
+      imageUrl: cryptocurrencyFutureOfPayments
     },
     {
       title: "Ransomware: A Threat to Cyber Smart Cities",
@@ -65,112 +78,35 @@ function Research() {
       venue: "Springer book chapter, Cybersecurity for Smart Cities",
       year: "2023",
       type: "Book Chapter",
-      link: "https://link.springer.com/chapter/10.1007/978-3-031-24946-4_13"
+      link: "https://link.springer.com/chapter/10.1007/978-3-031-24946-4_13",
+      imageUrl: ransomwareThreatToCyberSmartCities
     }
   ];
 
   const researchAreas = [
-    {
-      title: "Intoxication & Impairment Detection",
-      description: "Developing mobile and wearable device solutions for detecting impairment, including intoxication detection and gait analysis using sensor-based vision systems."
-    },
-    {
-      title: "Social Network Analysis",
-      description: "Studying social network dynamics, link prediction, and temporal evolution of networks to understand information diffusion and network behavior patterns."
-    },
-    {
-      title: "Human-Computer Interaction & Usability",
-      description: "Creating inclusive, practical, and adaptive interfaces with focus on usability studies and accessibility for diverse user populations including special needs users."
-    },
-    {
-      title: "Social Cybersecurity",
-      description: "Research on misinformation detection, influence operations, online trust mechanisms, and detection of malicious behavior in digital platforms."
-    }
+    { title: "Intoxication & Impairment Detection", description: "Developing mobile and wearable device solutions for detecting impairment, including intoxication detection and gait analysis using sensor-based vision systems." },
+    { title: "Social Network Analysis", description: "Studying social network dynamics, link prediction, and temporal evolution of networks to understand information diffusion and network behavior patterns." },
+    { title: "Human-Computer Interaction & Usability", description: "Creating inclusive, practical, and adaptive interfaces with focus on usability studies and accessibility for diverse user populations including special needs users." },
+    { title: "Social Cybersecurity", description: "Research on misinformation detection, influence operations, online trust mechanisms, and detection of malicious behavior in digital platforms." }
   ];
 
   // Student projects sorted from latest to oldest
   const studentProjects = [
-    {
-      students: "Zachary Mineau, Dylan Hoffman, Jiali Lor",
-      project: "Co-authors on the book chapter \"Cryptocurrency: Is it the Future of Payments?\"",
-      publication: "Springer, 2023",
-      type: "Book Chapter",
-      year: "2023"
-    },
-    {
-      students: "Cassandra Lamers, Eric Spoerl, Grace Levey",
-      project: "Co-authors on the book chapter \"Ransomware: A Threat to Cyber Smart Cities\"",
-      publication: "Springer, 2023",
-      type: "Book Chapter",
-      year: "2023"
-    },
-    {
-      students: "NCUR 2022 & 2023 Teams",
-      project: "Research presentations at National Conference on Undergraduate Research",
-      publication: "Projects on deepfakes, cryptocurrency, and cybersecurity",
-      type: "Conference Presentation",
-      year: "2022-2023"
-    },
-    {
-      students: "Capstone Project Teams",
-      project: "AI-driven usability studies and interactive learning tools for children with special needs",
-      publication: "Multiple peer-reviewed publications",
-      type: "Research Project",
-      year: "Ongoing"
-    }
+    { students: "Zachary Mineau, Dylan Hoffman, Jiali Lor", project: "Co-authors on the book chapter \"Cryptocurrency: Is it the Future of Payments?\"", publication: "Springer, 2023", type: "Book Chapter", year: "2023" },
+    { students: "Cassandra Lamers, Eric Spoerl, Grace Levey", project: "Co-authors on the book chapter \"Ransomware: A Threat to Cyber Smart Cities\"", publication: "Springer, 2023", type: "Book Chapter", year: "2023" },
+    { students: "NCUR 2022 & 2023 Teams", project: "Research presentations at National Conference on Undergraduate Research", publication: "Projects on deepfakes, cryptocurrency, and cybersecurity", type: "Conference Presentation", year: "2022-2023" },
+    { students: "Capstone Project Teams", project: "AI-driven usability studies and interactive learning tools for children with special needs", publication: "Multiple peer-reviewed publications", type: "Research Project", year: "Ongoing" }
   ];
 
   // Grants & Awards sorted from latest to oldest (2024 → 2017)
   const grantsAwards = [
-    {
-      title: "UW–Green Bay Summer Research Scholar Award",
-      amount: "$7,000",
-      year: "2024",
-      type: "Grant",
-      description: "Summer research funding for faculty research projects"
-    },
-    {
-      title: "WiSys Spark Research Grant",
-      amount: "$10,000",
-      year: "2023–2024",
-      type: "Grant",
-      description: "Research funding for innovative technology projects"
-    },
-    {
-      title: "Curriculum Development & Cybersecurity Lab Setup",
-      amount: "UWGB Funding",
-      year: "2022–2023",
-      type: "Grant",
-      description: "Funding recipient for curriculum development and cybersecurity lab setup"
-    },
-    {
-      title: "Best Paper Award Nominee",
-      amount: "IEEE IEMCON",
-      year: "2021",
-      type: "Award",
-      description: "Recognition for outstanding conference paper"
-    },
-    {
-      title: "Graduate Research Scholarship (GRS), University of Sydney",
-      amount: "Full PhD Support",
-      year: "2017–2020",
-      type: "Scholarship",
-      description: "Supported full-time PhD research"
-    },
-    {
-      title: "Postgraduate Research Support Scheme (PRSS), University of Sydney",
-      amount: "Travel & Research Support",
-      year: "2017, 2018",
-      type: "Support",
-      description: "Travel and research support funding"
-    },
-    {
-      title: "Travel Grants",
-      amount: "Multiple Awards",
-      year: "Various Years",
-      type: "Grant",
-      description: "Awarded multiple times for presenting papers at international IEEE conferences"
-    }
+    { title: "UW–Green Bay Summer Research Scholar Award", amount: "$7,000", year: "2024", type: "Grant", description: "Summer research funding for faculty research projects" },
+    { title: "WiSys Spark Research Grant", amount: "$10,000", year: "2023–2024", type: "Grant", description: "Research funding for innovative technology projects" },
+    { title: "Curriculum Development & Cybersecurity Lab Setup", amount: "UWGB Funding", year: "2022–2023", type: "Grant", description: "Funding recipient for curriculum development and cybersecurity lab setup" },
+    { title: "Best Paper Award Nominee", amount: "IEEE IEMCON", year: "2021", type: "Award", description: "Recognition for outstanding conference paper" },
+    { title: "Graduate Research Scholarship (GRS), University of Sydney", amount: "Full PhD Support", year: "2017–2020", type: "Scholarship", description: "Supported full-time PhD research" },
+    { title: "Postgraduate Research Support Scheme (PRSS), University of Sydney", amount: "Travel & Research Support", year: "2017, 2018", type: "Support", description: "Travel and research support funding" },
+    { title: "Travel Grants", amount: "Multiple Awards", year: "Various Years", type: "Grant", description: "Awarded multiple times for presenting papers at international IEEE conferences" }
   ];
 
   return (
@@ -211,40 +147,45 @@ function Research() {
         <AccordionSection title="Publications" icon={FiFileText}>
           <div className="space-y-6">
             {publications.map((pub, index) => (
-              <div key={index} className="p-6 bg-gray-50 rounded-lg">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-medium text-black flex-1 pr-4">
-                    {pub.title}
-                  </h3>
-                  <a 
-                    href={pub.link} 
-                    className="text-gray-600 hover:text-black transition-colors" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <SafeIcon icon={FiExternalLink} className="w-4 h-4" />
-                  </a>
+              <div key={index} className="flex flex-col sm:flex-row gap-6 p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-300">
+                <div className="w-full sm:w-40 h-32 flex-shrink-0 bg-gray-200 rounded-md overflow-hidden shadow-sm">
+                  {pub.imageUrl ? (
+                    <img src={pub.imageUrl} alt={`Visual for ${pub.title}`} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                      <SafeIcon icon={FiBookOpen} className="w-10 h-10" />
+                    </div>
+                  )}
                 </div>
-                <p className="text-black mb-2">{pub.authors}</p>
-                <div className="flex items-center gap-4 text-sm text-gray-600">
-                  <span className="px-2 py-1 bg-white rounded text-xs font-medium">
-                    {pub.type}
-                  </span>
-                  <span>{pub.venue}</span>
-                  <span>•</span>
-                  <span>{pub.year}</span>
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-lg font-medium text-black flex-1 pr-4">
+                      {pub.title}
+                    </h3>
+                    <a href={pub.link} className="text-gray-600 hover:text-black transition-colors" target="_blank" rel="noopener noreferrer" title="View Publication">
+                      <SafeIcon icon={FiExternalLink} className="w-4 h-4" />
+                    </a>
+                  </div>
+                  <p className="text-black mb-2">{pub.authors}</p>
+                  <div className="flex items-center flex-wrap gap-x-4 gap-y-2 text-sm text-gray-600">
+                    <span className="px-2 py-1 bg-white rounded text-xs font-medium border border-gray-200">
+                      {pub.type}
+                    </span>
+                    <span>{pub.venue}</span>
+                    <span className="hidden sm:inline">•</span>
+                    <span>{pub.year}</span>
+                  </div>
                 </div>
               </div>
             ))}
-            
             {/* Google Scholar Link */}
             <div className="mt-6 p-4 bg-gray-100 rounded-lg text-center">
               <p className="text-black">
                 See full publication list on{' '}
-                <a 
-                  href="https://scholar.google.com/citations?user=bcTAO-wAAAAJ&hl=en&inst=16730761618876726293" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://scholar.google.com/citations?user=bcTAO-wAAAAJ&hl=en&inst=16730761618876726293"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-black font-medium hover:text-gray-700 underline transition-colors"
                 >
                   Google Scholar
@@ -292,7 +233,6 @@ function Research() {
                 </ul>
               </div>
             )}
-
             {/* Bullet Points Format */}
             <div className="space-y-4">
               {grantsAwards.map((grant, index) => (
